@@ -1,6 +1,8 @@
 # playgrownd
 Free Unity assets for level design.
 
+![Logo](Doc/pG_top.jpg)
+
 # License
 The MIT License (MIT)
 
