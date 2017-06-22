@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 61bc5acbd395fbe47868efacb7510227
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Boid
+    100004: J_body_01
+    100006: J_body_02
+    100008: J_wing_L_01
+    100010: J_wing_L_02
+    100012: J_wing_L_03
+    100014: J_wing_R_01
+    100016: J_wing_R_02
+    100018: J_wing_R_03
+    400000: //RootNode
+    400002: Boid
+    400004: J_body_01
+    400006: J_body_02
+    400008: J_wing_L_01
+    400010: J_wing_L_02
+    400012: J_wing_L_03
+    400014: J_wing_R_01
+    400016: J_wing_R_02
+    400018: J_wing_R_03
+    2300000: //RootNode
+    2300002: Boid
+    3300000: //RootNode
+    3300002: Boid
+    4300000: Boid
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Boid
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: J_body_01
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boid
+        weight: 1
+      - path: J_body_01
+        weight: 1
+      - path: J_body_01/J_body_02
+        weight: 1
+      - path: J_body_01/J_wing_L_01
+        weight: 1
+      - path: J_body_01/J_wing_L_01/J_wing_L_02
+        weight: 1
+      - path: J_body_01/J_wing_L_01/J_wing_L_02/J_wing_L_03
+        weight: 1
+      - path: J_body_01/J_wing_R_01
+        weight: 1
+      - path: J_body_01/J_wing_R_01/J_wing_R_02
+        weight: 1
+      - path: J_body_01/J_wing_R_01/J_wing_R_02/J_wing_R_03
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,85 @@
+#include "UnityCG.cginc"
+
+RWStructuredBuffer<uint4> _Histogram;
+
+// Gathering pass
+Texture2D<float4> _Source;
+uint2 _SourceSize;
+uint _IsLinear;
+
+groupshared uint4 gs_histogram[256];
+
+#pragma kernel KHistogramGather
+[numthreads(32,32,1)]
+void KHistogramGather(uint3 id : SV_DispatchThreadID, uint3 _group_thread_id : SV_GroupThreadID)
+{
+    const uint thread_id = _group_thread_id.y * 32 + _group_thread_id.x;
+    
+    if (thread_id == 0)
+    {
+        for (int i = 0; i < 256; i++)
+            gs_histogram[i] = uint4(0, 0, 0, 0);
+    }       
+
+    GroupMemoryBarrierWithGroupSync();
+
+    if (id.x < _SourceSize.x && id.y < _SourceSize.y)
+    {
+        // We want a gamma histogram (like Photoshop & all)
+        float3 color = saturate(_Source[id.xy].xyz);
+        if (_IsLinear > 0)
+            color = LinearToGammaSpace(color);
+        
+        // Convert color & luminance to histogram bin
+        uint3 idx_c = (uint3)(round(color * 255.0));
+        uint idx_l = (uint)(round(dot(color.rgb, float3(0.2125, 0.7154, 0.0721)) * 255.0));
+    
+        // Fill the group shared histogram
+        InterlockedAdd(gs_histogram[idx_c.x].x, 1); // Red
+        InterlockedAdd(gs_histogram[idx_c.y].y, 1); // Green
+        InterlockedAdd(gs_histogram[idx_c.z].z, 1); // Blue
+        InterlockedAdd(gs_histogram[idx_l].w, 1); // Luminance
+    }
+
+    GroupMemoryBarrierWithGroupSync();
+
+    if (thread_id == 0)
+    {
+        for (int i = 0; i < 256; i++)
+        {
+            uint4 h = gs_histogram[i];
+            InterlockedAdd(_Histogram[i].x, h.x); // Red
+            InterlockedAdd(_Histogram[i].y, h.y); // Green
+            InterlockedAdd(_Histogram[i].z, h.z); // Blue
+            InterlockedAdd(_Histogram[i].w, h.w); // Luminance
+        }
+    }
+}
+
+// Scaling pass
+float _Height;
+groupshared uint4 gs_pyramid[256];
+
+#pragma kernel KHistogramScale
+[numthreads(16,16,1)]
+void KHistogramScale(uint3 _group_thread_id : SV_GroupThreadID)
+{
+    const uint thread_id = _group_thread_id.y * 16 + _group_thread_id.x;
+    gs_pyramid[thread_id] = _Histogram[thread_id];
+
+    GroupMemoryBarrierWithGroupSync();
+
+    // Parallel reduction to find the max value
+    [unroll]
+    for(uint i = 256 >> 1; i > 0; i >>= 1)
+    {
+        if(thread_id < i)
+            gs_pyramid[thread_id] = max(gs_pyramid[thread_id], gs_pyramid[thread_id + i]);
+
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    // Actual scaling
+    float4 factor = _Height / (float4)gs_pyramid[0];
+    _Histogram[thread_id] = (uint4)round(_Histogram[thread_id] * factor);
+}
