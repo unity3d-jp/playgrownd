@@ -1,5 +1,5 @@
 # playgrownd
-Free assets for level design
+Free Unity assets for level design.
 
 # License
 The MIT License (MIT)
