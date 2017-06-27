@@ -20,7 +20,7 @@ Free Unity assets for level design.
 正常にインポートされるとこのような形になります。
 ![Fix_01](Doc/pg_ss_001.jpg)
 
-playGROWnd/Assets/Models/以下に各種オブジェクトが入っています。  
+playGROWnd/Models/以下に各種オブジェクトが入っています。  
 HierarchyやSceneビューにドラッグして自由にブロック遊びを楽しみましょう。
 ![Fix_02](Doc/pg_ss_002.jpg)
 
