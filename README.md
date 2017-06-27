@@ -1,7 +1,20 @@
 ![Logo](Doc/pG_top.jpg)
 
-# playgrownd
+# playGROWnd
 Free Unity assets for level design.
+
+* playGROWndは自由に使えるレベルデザイン用のアセットです。
+* 全てが規格化され、ブロック遊びをするようにステージを制作できます。
+* スキンドメッシュは存在しないので、FBXを3DCGツールで編集する事で欲しい形状を簡単に編集/追加できます。
+* 多くのテクスチャはPSDで入っておりレイヤーも統合されておりませんので、自由に改変する事が出来ます。
+* 同梱されているBGM等も全てMITライセンスでの提供です。
+
+# How to use ?
+* 右上の緑のボタン(Clone or Download)から任意の方式を選ぶか、この[パッケージ](http://neotenydesign.heteml.jp/playGROWnd/playGROWnd_170627.unitypackage)をダウンロードします。
+* Zip及びGitのCloneについては解ってる人しか使わないと思うので頑張ってください。
+* ダウンロードした.unitypackageをUnityにインポートしてください。
+
+[解説動画(TWITCH)](https://www.twitch.tv/videos/153814022)
 
 # License
 The MIT License (MIT)
